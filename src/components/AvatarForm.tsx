@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { AvatarStyle, Option, OptionContext } from 'avataaars'
 import {
-  Button,
+  // Button,
   Col,
   ControlLabel,
   Form,
@@ -17,18 +17,18 @@ interface SelectProps {
 }
 
 // ref: https://stackoverflow.com/a/1714899/25077
-const serializeQuery = function (obj: any) {
-  const str = []
-  for (const p in obj) {
-    if (obj.hasOwnProperty(p)) {
-      str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]))
-    }
-  }
-  return str.join('&')
-}
+// const serializeQuery = function (obj: any) {
+//   const str = []
+//   for (const p in obj) {
+//     if (obj.hasOwnProperty(p)) {
+//       str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]))
+//     }
+//   }
+//   return str.join('&')
+// }
 
 class OptionSelect extends React.Component<SelectProps> {
-  render () {
+  render() {
     const { controlId, label, value, children } = this.props
     return (
       <FormGroup className='row' controlId={controlId}>
@@ -69,7 +69,7 @@ export interface Props {
 export default class AvatarForm extends React.Component<Props> {
   private onChangeCache: Array<(value: string) => void> = []
 
-  componentWillMount () {
+  componentWillMount() {
     const { optionContext } = this.props
     optionContext.addStateChangeListener(() => {
       this.forceUpdate()
@@ -79,8 +79,8 @@ export default class AvatarForm extends React.Component<Props> {
     )
   }
 
-  render () {
-    const { optionContext, avatarStyle, displayingImg, displayingCode } = this.props
+  render() {
+    const { optionContext, avatarStyle } = this.props
     const selects = optionContext.options.map((option, index) => {
       const optionState = optionContext.getOptionState(option.key)!
       if (optionState.available <= 0) {
@@ -148,8 +148,8 @@ export default class AvatarForm extends React.Component<Props> {
             </a>
           </Col>
         </FormGroup>
-        <FormGroup className='row'>
-          <Col
+        {/* <FormGroup className='row'> */}
+        {/* <Col
             className={'offset-sm-' + labelCol}
             smOffset={labelCol}
             sm={inputCol}>
@@ -198,12 +198,12 @@ export default class AvatarForm extends React.Component<Props> {
               />
             </div>
           </Col>
-        </FormGroup>
+        </FormGroup> */}
       </Form>
     )
   }
 
-  private onChange (option: Option, value: string) {
+  private onChange(option: Option, value: string) {
     const { optionContext } = this.props
     optionContext.setValue(option.key, value)
   }
@@ -214,31 +214,31 @@ export default class AvatarForm extends React.Component<Props> {
     }
   }
 
-  private onDownloadPNG = (event: React.FormEvent<FormControl>) => {
-    event.preventDefault()
-    if (this.props.onDownloadPNG) {
-      this.props.onDownloadPNG()
-    }
-  }
+  // private onDownloadPNG = (event: React.FormEvent<FormControl>) => {
+  //   event.preventDefault()
+  //   if (this.props.onDownloadPNG) {
+  //     this.props.onDownloadPNG()
+  //   }
+  // }
 
-  private onDownloadSVG = (event: React.FormEvent<FormControl>) => {
-    event.preventDefault()
-    if (this.props.onDownloadSVG) {
-      this.props.onDownloadSVG()
-    }
-  }
+  // private onDownloadSVG = (event: React.FormEvent<FormControl>) => {
+  //   event.preventDefault()
+  //   if (this.props.onDownloadSVG) {
+  //     this.props.onDownloadSVG()
+  //   }
+  // }
 
-  private onToggleCode = (event: React.FormEvent<FormControl>) => {
-    event.preventDefault()
-    if (this.props.onToggleCode) {
-      this.props.onToggleCode()
-    }
-  }
+  // private onToggleCode = (event: React.FormEvent<FormControl>) => {
+  //   event.preventDefault()
+  //   if (this.props.onToggleCode) {
+  //     this.props.onToggleCode()
+  //   }
+  // }
 
-  private onToggleImg = (event: React.FormEvent<FormControl>) => {
-    event.preventDefault()
-    if (this.props.onToggleImg) {
-      this.props.onToggleImg()
-    }
-  }
+  // private onToggleImg = (event: React.FormEvent<FormControl>) => {
+  //   event.preventDefault()
+  //   if (this.props.onToggleImg) {
+  //     this.props.onToggleImg()
+  //   }
+  // }
 }

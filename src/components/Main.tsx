@@ -6,7 +6,7 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { Avatar, AvatarStyle, OptionContext, allOptions } from 'avataaars'
 import { Button } from 'react-bootstrap'
-import { Helmet } from 'react-helmet'
+// import { Helmet } from 'react-helmet'
 import {
   UrlQueryParamTypes,
   UrlUpdateTypes,
@@ -47,7 +47,7 @@ interface State {
   displayComponentImg: boolean
 }
 
-function capitalizeFirstLetter (text: string) {
+function capitalizeFirstLetter(text: string) {
   return text.charAt(0).toUpperCase() + text.slice(1)
 }
 
@@ -68,35 +68,35 @@ export class Main extends React.Component<Props, State> {
   private canvasRef: HTMLCanvasElement | null = null
   private optionContext: OptionContext = new OptionContext(allOptions)
 
-  getChildContext () {
+  getChildContext() {
     return { optionContext: this.optionContext }
   }
 
-  componentWillReceiveProps (nextProps: Props) {
+  componentWillReceiveProps(nextProps: Props) {
     this.updateOptionContext(nextProps)
   }
 
-  componentWillMount () {
+  componentWillMount() {
     this.optionContext.addValueChangeListener(this.onOptionValueChange)
     this.updateOptionContext(this.props)
   }
 
-  componentDidMount () {
+  componentDidMount() {
     const anyWindow = window as any
     setTimeout(() => {
       anyWindow.prerenderReady = true
     }, 500)
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.optionContext.removeValueChangeListener(this.onOptionValueChange)
   }
 
-  render () {
+  render() {
     const { avatarStyle } = this.props
     const { displayComponentCode, displayComponentImg } = this.state
-    const title = 'Avataaars Generator - Generate your own avataaars!'
-    const imageURL = process.env.REACT_APP_IMG_RENDERER_URL + location.search
+    // const title = 'Avataaars Generator - Generate your own avataaars!'
+    // const imageURL = process.env.REACT_APP_IMG_RENDERER_URL + location.search
     return (
       <main role='main'>
         <header className='header clearfix'>
@@ -112,7 +112,7 @@ export class Main extends React.Component<Props, State> {
             </Button>
           </h2>
         </header>
-        <Helmet>
+        {/* <Helmet>
           <meta property='og:title' content={title} />
           <meta property='og:site_name' content='Avataaars Generator' />
           <meta property='og:url' content={document.location.href} />
@@ -126,7 +126,7 @@ export class Main extends React.Component<Props, State> {
           <meta name='twitter:title' content={title} />
           <meta name='twitter:image' content={imageURL} />
           <meta name='twitter:url' content={document.location.href} />
-        </Helmet>
+        </Helmet> */}
         <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
           <Avatar ref={this.onAvatarRef} avatarStyle={avatarStyle} />
         </div>
@@ -172,7 +172,7 @@ export class Main extends React.Component<Props, State> {
     updateHandler(value)
   }
 
-  private updateOptionContext (nextProps: Props) {
+  private updateOptionContext(nextProps: Props) {
     this.optionContext.setData(nextProps as any)
   }
 
@@ -241,7 +241,7 @@ export class Main extends React.Component<Props, State> {
     this.triggerDownload(svg, 'avataaars.svg')
   }
 
-  private triggerDownload (imageBlob: Blob, fileName: string) {
+  private triggerDownload(imageBlob: Blob, fileName: string) {
     FileSaver.saveAs(imageBlob, fileName)
   }
 
