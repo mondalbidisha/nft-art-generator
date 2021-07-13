@@ -4,12 +4,12 @@ import Main from './Main'
 import history from '../history'
 
 export default class App extends React.Component {
-  componentDidMount () {
+  componentDidMount() {
     // force an update if the URL changes
     history.listen(() => this.forceUpdate())
   }
 
-  render () {
+  render() {
     return <Main />
   }
 }

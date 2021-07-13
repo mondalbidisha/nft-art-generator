@@ -103,8 +103,6 @@ export default class AvatarForm extends React.Component<Props> {
         </OptionSelect>
       )
     })
-    const labelCol = 3
-    const inputCol = 9
     return (
       <Form horizontal>
         <FormGroup className='row' controlId='avatar-style'>
@@ -137,68 +135,6 @@ export default class AvatarForm extends React.Component<Props> {
           </Col>
         </FormGroup>
         {selects}
-        <FormGroup className='row'>
-          <Col
-            className={`offset-sm-${labelCol}`}
-            smOffset={labelCol}
-            sm={inputCol}>
-            More options coming soon,{' '}
-            <a href='http://eepurl.com/c_7fN9' target='_blank'>
-              subscribe for updates
-            </a>
-          </Col>
-        </FormGroup>
-        {/* <FormGroup className='row'> */}
-        {/* <Col
-            className={'offset-sm-' + labelCol}
-            smOffset={labelCol}
-            sm={inputCol}>
-            <Button
-              bsStyle='primary'
-              type='submit'
-              onClick={this.onDownloadPNG}>
-              <i className='fa fa-download' /> PNG
-            </Button>{' '}
-            <Button
-              bsStyle='secondary'
-              type='submit'
-              onClick={this.onDownloadSVG}>
-              <i className='fa fa-download' /> SVG
-            </Button>{' '}
-            <Button
-              bsStyle='secondary'
-              type='submit'
-              onClick={this.onToggleCode}>
-              <i className='fa fa-code' />{' '}
-              {displayingCode ? 'Hide React' : 'Show React'}
-            </Button>{' '}
-            <Button
-              bsStyle='secondary'
-              type='submit'
-              onClick={this.onToggleImg}>
-              <i className='fa fa-code' />{' '}
-              {displayingImg ? 'Hide <img>' : 'Show <img>'}
-            </Button>
-            <div style={{ marginTop: '10px' }}>
-              <iframe
-                src={
-                  'https://platform.twitter.com/widgets/tweet_button.html?' +
-                  serializeQuery({
-                    text: 'I just created my avataaars here 😆',
-                    url: document.location.href,
-                    hashtags: 'avataaars,avatar',
-                    size: 'l',
-                    lang: 'en'
-                  })
-                }
-                width='140'
-                height='28'
-                title='Twitter Tweet Button'
-                style={{ border: 0, overflow: 'hidden' }}
-              />
-            </div>
-          </Col>
-        </FormGroup> */}
       </Form>
     )
   }
@@ -213,32 +149,4 @@ export default class AvatarForm extends React.Component<Props> {
       this.props.onAvatarStyleChange((event.target as any).value)
     }
   }
-
-  // private onDownloadPNG = (event: React.FormEvent<FormControl>) => {
-  //   event.preventDefault()
-  //   if (this.props.onDownloadPNG) {
-  //     this.props.onDownloadPNG()
-  //   }
-  // }
-
-  // private onDownloadSVG = (event: React.FormEvent<FormControl>) => {
-  //   event.preventDefault()
-  //   if (this.props.onDownloadSVG) {
-  //     this.props.onDownloadSVG()
-  //   }
-  // }
-
-  // private onToggleCode = (event: React.FormEvent<FormControl>) => {
-  //   event.preventDefault()
-  //   if (this.props.onToggleCode) {
-  //     this.props.onToggleCode()
-  //   }
-  // }
-
-  // private onToggleImg = (event: React.FormEvent<FormControl>) => {
-  //   event.preventDefault()
-  //   if (this.props.onToggleImg) {
-  //     this.props.onToggleImg()
-  //   }
-  // }
 }

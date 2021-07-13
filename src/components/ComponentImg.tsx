@@ -13,19 +13,19 @@ export default class ComponentCode extends React.Component<Props> {
 
   private textArea: HTMLTextAreaElement | null = null
 
-  private get optionContext (): OptionContext {
+  private get optionContext(): OptionContext {
     return this.context.optionContext
   }
 
-  componentWillMount () {
+  componentWillMount() {
     this.optionContext.addValueChangeListener(this.onOptionValueChange)
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.optionContext.removeValueChangeListener(this.onOptionValueChange)
   }
 
-  render () {
+  render() {
     const { avatarStyle } = this.props
     const { optionContext } = this
     const props: Array<string> = []
